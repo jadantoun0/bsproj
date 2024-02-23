@@ -23,6 +23,8 @@ class DbHelper {
       version: 4,
       onCreate: (Database database, int version) async {
         await _createTables(database);
+        await _insertInitialShortcuts(database);
+        await _insertInitialTranscript(database);
       },
     );
     return database;
@@ -58,5 +60,29 @@ class DbHelper {
       shortcut_name VARCHAR(255)
     );  
     """);
+  }
+
+  static Future _insertInitialTranscript(Database database) async {
+    await database.insert(
+      'transcripts',
+      {
+        'transcript_name': 'Untitled',
+        'date_created': DateTime.now().toString(),
+      },
+    );
+  }
+
+  static Future _insertInitialShortcuts(Database database) async {
+    await database.execute("""
+       INSERT INTO shortcuts (shortcut_name) VALUES 
+        ('Hey, how are you'),
+        ('Thank you'),
+        ('One coffee, please'),
+        ("I'm deaf, help please"),
+        ('I need assistance'),
+        ('Hello'),
+        ('How much does it cost?'),
+        ('Goodbye, see you later');
+   """);
   }
 }

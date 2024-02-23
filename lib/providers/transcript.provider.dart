@@ -22,16 +22,6 @@ class TranscriptProvider extends ChangeNotifier {
     updateTranscripts(transcriptsList);
   }
 
-  Future insertInitialTranscript() async {
-    Transcript transcript = Transcript(
-      transcriptId: 0,
-      transcriptName: 'Untitled',
-      dateCreated: DateTime.now(),
-    );
-    await addTranscript(transcript);
-    await fetchTranscripts();
-  }
-
   Future<int> addTranscript(Transcript transcript) async {
     int id = await TranscriptDAO.insertTranscript(transcript);
     _transcripts.add(TranscriptDTO(

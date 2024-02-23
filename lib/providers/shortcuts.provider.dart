@@ -37,12 +37,6 @@ class ShortcutsProvider extends ChangeNotifier {
     updateShortcuts(shortcuts);
   }
 
-  Future insertInitialShortcuts() async {
-    await ShortcutDAO.insertInitialShortcuts();
-    List<Shortcut> shortcuts = await ShortcutDAO.getAllShortcuts();
-    updateShortcuts(shortcuts);
-  }
-
   Future changeOrderInDB(List<Shortcut> newList) async {
     // we clear the db first
     await ShortcutDAO.deleteAllShortcuts();

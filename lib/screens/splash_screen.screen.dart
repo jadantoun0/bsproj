@@ -33,18 +33,12 @@ class _SplashScreenState extends State<SplashScreen> {
     if (mounted) {
       TranscriptProvider transcriptProvider =
           Provider.of<TranscriptProvider>(context, listen: false);
-      if (isFirstTime) {
-        await transcriptProvider.insertInitialTranscript();
-      }
       await transcriptProvider.fetchTranscripts();
     }
 
     if (mounted) {
       ShortcutsProvider shortcutsProvider =
           Provider.of<ShortcutsProvider>(context, listen: false);
-      if (isFirstTime) {
-        await shortcutsProvider.insertInitialShortcuts();
-      }
       await shortcutsProvider.fetchShortcuts();
     }
 
