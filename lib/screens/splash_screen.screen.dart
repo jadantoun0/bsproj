@@ -1,9 +1,9 @@
-import 'package:deafconnect/nav.dart';
-import 'package:deafconnect/providers/shortcuts.provider.dart';
-import 'package:deafconnect/providers/transcript.provider.dart';
-import 'package:deafconnect/utils/colors.dart';
-import 'package:deafconnect/utils/navigation_utils.dart';
-import 'package:deafconnect/utils/shared_preferences_utils.dart';
+import 'package:deaf_connect/nav.dart';
+import 'package:deaf_connect/providers/shortcuts.provider.dart';
+import 'package:deaf_connect/providers/transcript.provider.dart';
+import 'package:deaf_connect/utils/colors.dart';
+import 'package:deaf_connect/utils/navigation_utils.dart';
+import 'package:deaf_connect/utils/shared_preferences_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
