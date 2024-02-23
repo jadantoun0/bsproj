@@ -198,15 +198,16 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               const SizedBox(height: 5),
               Consumer<TranscriptProvider>(
-                  builder: (context, transcriptProvider, child) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text(
-                    transcript?.transcriptName ?? '',
-                    style: TextStyle(color: Colors.grey[300], fontSize: 14),
-                  ),
-                );
-              })
+                builder: (context, transcriptProvider, child) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      transcript?.transcriptName ?? '',
+                      style: TextStyle(color: Colors.grey[300], fontSize: 14),
+                    ),
+                  );
+                },
+              )
             ],
           ),
           actions: [
@@ -234,8 +235,11 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Consumer<TranscriptProvider>(
             builder: (context, transcriptProvider, child) {
               return transcript == null
-                  ? const Center(
-                      child: Text('Create a transcript to start chatting.'),
+                  ? SingleChildScrollView(
+                      controller: _scrollController,
+                      child: const Center(
+                        child: Text('Create a transcript to start chatting.'),
+                      ),
                     )
                   : Column(
                       children: [
